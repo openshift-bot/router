@@ -1,5 +1,5 @@
 # Test extension builder stage (added by ote-migration)
-FROM registry.ci.openshift.org/ocp/builder:rhel-9-golang-1.26-openshift-5.0 AS test-extension-builder
+FROM registry.ci.openshift.org/ocp/builder:rhel-9-golang-1.26-openshift-5.1 AS test-extension-builder
 RUN mkdir -p /go/src/github.com/openshift/router
 WORKDIR /go/src/github.com/openshift/router
 COPY tests-extension/ tests-extension/
@@ -8,7 +8,7 @@ RUN cd tests-extension && \
     cd bin && \
     gzip -n router-tests-ext
 
-FROM registry.ci.openshift.org/ocp/5.0:base-rhel9
+FROM registry.ci.openshift.org/ocp/5.1:base-rhel9
 # Copy test extension binary (raw gzip per OTE convention)
 COPY --from=test-extension-builder /go/src/github.com/openshift/router/tests-extension/bin/router-tests-ext.gz /usr/bin/
 RUN INSTALL_PKGS="socat haproxy32" && \
