@@ -1,4 +1,4 @@
-FROM registry.ci.openshift.org/ocp/5.1:base-rhel10
+FROM registry.ci.openshift.org/ocp/5.2:base-rhel10
 # qatengine provides the Intel QuickAssist Technology (QAT) OpenSSL provider
 # (qatprovider.so). It is inert unless explicitly loaded with the
 # "ssl-provider qatprovider" global keyword. QAT is Intel-only hardware, hence
